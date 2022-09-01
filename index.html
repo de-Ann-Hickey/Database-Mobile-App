@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My CBDB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <!--Reference the jquery mobile css to unlock basic styling-->
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <!--Use my custom theme-->
+    <link rel="stylesheet" href="css/themes/myTheme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section data-role="page" id="welcomePage" data-theme="b">
+        <article role="main" class="ui-content">
+            <a href="#loginPage" data-role="button" data-transition="flip">Click here to Log In</a>      
+            <a href="#signupPage" data-role="button" data-transition="flip">Not a member? Sign up here</a>
+            <p> <img src="img/DP.jpg" alt="DeadPool" class="imgFull"></p>  
+        </article>
+    </section>
+
+    <section data-role="page" id="signupPage">
+        <header data-role="header" data-add-back-btn="true">
+            <h1>Sign Up</h1>
+        </header>
+
+        <article role="main" class="ui-content">
+        
+        <form id="formSignUp">
+            <label for="signUpInputEmail">Email:</label>
+                <input type="email" data-clear-btn="true" name="signUpInputEmail" id="signUpInputEmail" placeholder="dead@pool.org" required>
+            <label for="signUpInputPassword">Password:</label>
+                <input type="password" data-clear-btn="true" name="signUpInputPassword" id="signUpInputPassword" value="" autocomplete="off" required>
+            <label for="confirmPassword">Re-enter Password:</label>
+                <input type="password" data-clear-btn="true" name="confirmPassword" id="confirmPassword" value="" autocomplete="off" required>
+            <input type="submit" value="Create Account">
+            <input type="reset" value="Clear">
+        </form> 
+        
+        </article>
+
+    </section>
+
+    <section data-role="page" id="loginPage">
+        <header data-role="header" data-add-back-btn="true"> 
+            <h1>Login</h1>
+         </header>
+         <article role="main" class="ui-content">
+            <form id="formLogin">
+                <label for="inputEmailLogIn">Email:</label>
+                <input type="email" name="inputEmailLogIn" id="inputEmailLogIn" placeholder="dead@pool.org" required>
+                <label for="inputPasswordLogIn">Password:</label>
+                <input type="password" name="inputPasswordLogIn" id="inputPasswordLogIn" value="" autocomplete="off">
+                <input type="submit" value="Log In">
+                <input type="reset" value="Clear">
+            </form>
+            <a href="#homePage" class="ui-btn ui-btn-inline">To Home Page</a>
+
+         </article>
+
+    </section>
+
+
+    <section data-role="page" id="homePage">
+        <header data-role="header">
+            <h1>Home</h1>
+            <a href="#settingsPage" data-transition="pop" data-icon="gear" class="ui-btn-right" data-iconpos="notext">Settings</a>
+            <nav data-role="navbar">
+                <ul>
+                    <li><a href="#homePage" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href="#viewInventoryPage" data-icon="bars">My Inventory</a></li>
+                    <li><a href="#savePage" data-icon="heart">Save a Comic</a></li>
+                </ul> 
+            </nav>
+        </header>
+
+        <article role="main" class="ui-content">
+              <h2>Welcome!</h2>
+              <p>This is an app that stores all of your comic books.</p>
+            <p> <img src="img/groot.jpg" alt="groot" class="imgFull"></p>  
+        </article>
+        <footer data-role="footer" data-position="fixed">
+            <h4 class="userEmail">Footer</h4>
+        </footer>
+
+    </section>
+
+    <section data-role="page" id="viewInventoryPage">
+        <header data-role="header">
+            <h1>My Inventory</h1>
+            <a href="#settingsPage" data-transition="pop" data-icon="gear" class="ui-btn-right" data-iconpos="notext">Settings</a>
+            <nav data-role="navbar" >
+                <ul>
+                    <li><a href="#homePage" data-icon="home" >Home</a></li>
+                    <li><a href="#viewInventoryPage" data-icon="bars" class="ui-btn-active ui-state-persist">My Inventory</a></li>
+                    <li><a href="#savePage" data-icon="heart">Save a Comic</a></li>
+                </ul>
+            </nav>
+        </header>
+        <article role="main" class="ui-content">
+            <div id="divViewComics"></div>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+          <a data-role="button" href="#" id="btnDeleteCollection">Delete Collection</a>
+        </footer>
+    </section>
+
+    <section data-role="page" id="savePage">
+        <header data-role="header">
+            <h1>Save a Comic</h1>
+            <a href="#settingsPage" data-transition="pop" data-icon="gear" class="ui-btn-right" data-iconpos="notext">Settings</a>
+            <nav data-role="navbar">
+                <ul>
+                    <li><a href="#homePage" data-icon="home" >Home</a></li>
+                    <li><a href="#viewInventoryPage" data-icon="bars">My Inventory</a></li>
+                    <li><a href="#savePage" data-icon="heart" class="ui-btn-active ui-state-persist">Save a Comic</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <article role="main" class="ui-content">
+            <!--Form to save a comic-->
+            <form id="formSaveComic">
+                <!-- Fieldset for grouping logical elements of a form-->
+                <fieldset>
+                    <legend>Required</legend>
+                    <label for="inputTitleSave">Title</label>
+                        <input required type="text" placeholder="DeadPool" name="inputTitleSave" id="inputTitleSave">
+                    <label for="inputNumberSave">Number</label>
+                        <input required type="number" placeholder="1" name="inputNumberSave" id="inputNumberSave">
+                    <label for="inputYearSave">Year</label>
+                        <input required type="number" placeholder="2070" name="inputYearSave" id="inputYearSave">
+                </fieldset>
+                <fieldset>
+                    <legend>Optional</legend>
+                    <label for="inputPublisherSave">Publisher</label>
+                        <input type="text" placeholder="Marvel" name="inputPublisherSave" id="inputPublisherSave">
+                    <label for="inputNotesSave">Notes:</label>
+                        <textarea placeholder="My favorite from that year" name="inputNotesSave" id="inputNotesSave"></textarea>
+                </fieldset>
+                <input type="reset" value="Clear">
+                <input type="submit" value="Save">
+            </form>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+            <h4>Footer</h4>
+        </footer>
+
+    </section>
+
+    <section data-role="page" data-dialog="true" id="settingsPage">
+        <header data-role="header">
+            <h1>Options</h1>
+        </header>
+
+        <article role="main" class="ui-content">
+            <a data-role="button" href="#" id="btnDeleteCollection2">Delete Collection</a>
+            <p> <a href="#" id="btnLogOut" data-role="button">Logout</a> </p>
+            <h4>Design by DeAnn Hickey <a href="mailto:2freefly35@gmail.com">2freefly35@gmail.com</a></h4>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+        </footer>
+
+    </section>
+
+  <section data-role="page" id="pgComicViewEdit">   
+    <header data-role="header">      
+      <h1>Edit</h1>   
+    </header>   
+    <article role="main" class="ui-content">      
+      <form id="fmEditComicInfo">
+        <label for="inTitleEdit">Title</label><input type="text" name="inTitleEdit" id="inTitleEdit">
+        <label for="inNumberEdit">Number</label><input type="number" name="inNumberEdit" id="inNumberEdit">
+        <label for="inYearEdit">Year</label><input type="number" name="inYearEdit" id="inYearEdit">
+        <label for="inPublisherEdit">Publisher</label><input type="text" name="inPublisherEdit" id="inPublisherEdit">
+        <label for="inNotesEdit">Notes</label><textarea name="inNotesEdit" id="inNotesEdit"></textarea>
+        <input type="submit" value="Update">
+        <input type="button" value="Delete" id="btnDeleteComic">
+        <input type="button" value="Cancel" id="btnEditComicCancel">     
+      </form>   
+    </article>
+  </section>
+
+<!--Best practice to have JS loaded at the end of the file-->
+<!--Ref the JQM javascript file to access JS power and interface building features-->
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<!--Pouch DB-->
+<script src="js/pouchdb-7.2.1.min.js"></script>
+<!-- Custom JS code for interactivity, etc -->
+<script src="js/mycustom.js"></script>
+
+</body>
+</html>
+
+
